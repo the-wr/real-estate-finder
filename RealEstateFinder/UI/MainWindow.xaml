@@ -1,0 +1,45 @@
+﻿<Window x:Class="RealEstateFinder.UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RealEstateFinder"
+        xmlns:ui="clr-namespace:RealEstateFinder.UI"
+        xmlns:oxy="http://oxyplot.org/wpf"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Real Estate Finder" Height="800" Width="1200">
+    <Grid>
+        <DockPanel Margin="16">
+            <DockPanel DockPanel.Dock="Top">
+                <ComboBox Name="cbRequest" Width="200" DockPanel.Dock="Left" MaxDropDownHeight="400"></ComboBox>
+                <Button Name="btnAddNewRequest" Width="60" DockPanel.Dock="Left" Margin="16,0,0,0">New</Button>
+                <Button Name="btnScan" Width="80" Margin="48,0,16,0">Scan</Button>
+                <TextBlock Name="tbScanStatus" Width="200" DockPanel.Dock="Right" VerticalAlignment="Center" TextAlignment="Center"></TextBlock>
+                <ProgressBar Name="progressScan"></ProgressBar>
+            </DockPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,32,0,0" DockPanel.Dock="Top"></StackPanel>
+
+            <DockPanel>
+                <ui:ResultListHeader x:Name="header" DockPanel.Dock="Top" Margin="3,0,0,3"></ui:ResultListHeader>
+                <ScrollViewer DockPanel.Dock="Right" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                    <StackPanel Orientation="Vertical" Width="300" Margin="0,0,16,0">
+                        <oxy:PlotView Name="plot1" Height="200"></oxy:PlotView>
+                        <oxy:PlotView Name="plot3" Height="200"></oxy:PlotView>
+                        <oxy:PlotView Name="plot2" Height="2000" IsEnabled="False"></oxy:PlotView>
+                    </StackPanel>
+                </ScrollViewer>
+
+                <ui:ApartmentDetails x:Name="apartmentDetails" DockPanel.Dock="Bottom" Margin="0,16,0,0"></ui:ApartmentDetails>
+                <ListView Name="lvItems" ItemsSource="{Binding Apartments}" HorizontalContentAlignment="Stretch">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ui:ResultListItem Apartment="{Binding Path=.}"></ui:ResultListItem>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </DockPanel>
+        </DockPanel>
+    </Grid>
+</Window>
