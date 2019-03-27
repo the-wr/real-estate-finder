@@ -48,7 +48,7 @@ namespace RealEstateFinder.Core
                 if ( apartmentsDatabase.Apartments.TryGetValue( id, out apartment ) )
                     return apartment;
                 return null;
-            } ).Where( it => it != null ).Where( it => !requests.SelectedRequest.ExcludedRegions.Contains( it.Region ) ) );
+            } ).Where( it => it != null && !it.IsHidden ).Where( it => !requests.SelectedRequest.ExcludedRegions.Contains( it.Region ) ) );
 
             if ( SortBy == Sort.VALUE )
             {

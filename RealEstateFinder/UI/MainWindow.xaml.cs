@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using OxyPlot;
 using OxyPlot.Axes;
 using OxyPlot.Series;
@@ -31,6 +32,12 @@ namespace RealEstateFinder.UI
             requests = new RequestsModel();
             searchResultsDatabase = new SearchResultsDatabase();
             apartmentsDatabase = new ApartmentsDatabase();
+
+            Closing += ( sender, args ) =>
+            {
+                apartmentsDatabase.Save();
+            };
+            PreviewKeyDown += OnPreviewKeyDown;
 
             scanner.ScanCompleted += OnScanCompleted;
             scanner.ProgressChanged += OnScanProgressChanged;
@@ -135,6 +142,21 @@ namespace RealEstateFinder.UI
             }
         }
 
+        private void OnPreviewKeyDown( object sender, System.Windows.Input.KeyEventArgs e )
+        {
+            if ( e.Key == Key.Delete )
+            {
+                var apartment = lvItems.SelectedItem as Apartment;
+                if ( apartment != null )
+                {
+                    apartment.IsHidden = !apartment.IsHidden;
+                    apartment.OnPropertyChanged();
+
+                    lvItems.SelectedIndex++;
+                }
+                //apartmentDetails.SetApartment( requests.SelectedRequest, lvItems.SelectedItem as Apartment );
+            }
+        }
         // -----
 
         private void OnScanCompleted()

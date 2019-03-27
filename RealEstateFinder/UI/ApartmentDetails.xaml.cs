@@ -31,10 +31,11 @@ namespace RealEstateFinder.UI
         {
             InitializeComponent();
 
-            btnRefresh.Click += OnRefreshClicked;
+            //btnRefresh.Click += OnRefreshClicked;
             btnOpenMap.Click += OnOpenMapClicked;
             btnOpenSite.Click += OnOpenSiteClicked;
             btnFavorite.Click += OnFavoriteClicked;
+            btnDel.Click += OnDelClicked;
         }
 
         public void SetApartment( Request request, Apartment apartment )
@@ -49,6 +50,7 @@ namespace RealEstateFinder.UI
             }
         }
 
+        /*
         private void OnRefreshClicked( object sender, RoutedEventArgs e )
         {
             if ( request == null || apartment == null )
@@ -72,6 +74,7 @@ namespace RealEstateFinder.UI
             } );
             thread.Start();
         }
+        */
 
         private void OnOpenSiteClicked( object sender, RoutedEventArgs e )
         {
@@ -98,6 +101,15 @@ namespace RealEstateFinder.UI
                 return;
 
             apartment.IsFavorite = !apartment.IsFavorite;
+            apartment.OnPropertyChanged();
+        }
+
+        private void OnDelClicked( object sender, RoutedEventArgs e )
+        {
+            if ( request == null || apartment == null )
+                return;
+
+            apartment.IsHidden = !apartment.IsHidden;
             apartment.OnPropertyChanged();
         }
     }

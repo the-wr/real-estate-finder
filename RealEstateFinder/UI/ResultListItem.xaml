@@ -21,6 +21,7 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock Name="tbRegion">Region</TextBlock>
+        <Rectangle Name="rectStatus" Width="40" HorizontalAlignment="Right" Fill="Black" RadiusX="5" RadiusY="5" Margin="0,2,0,2"></Rectangle>
         <TextBlock Name="tbRooms" Grid.Column="1" HorizontalAlignment="Center">Rooms</TextBlock>
         <TextBlock Name="tbArea" Grid.Column="2" HorizontalAlignment="Center">Area</TextBlock>
         <TextBlock Name="tbPrice" Grid.Column="3" HorizontalAlignment="Center">Price</TextBlock>

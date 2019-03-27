@@ -59,15 +59,19 @@ namespace RealEstateFinder.UI
         {
             if ( data.IsFavorite )
             {
-                grid.Background = Brushes.Gold;
+                rectStatus.Fill = Brushes.Gold;
             }
             else if ( data.IsNew )
             {
-                grid.Background = Brushes.LightGreen;
+                rectStatus.Fill = Brushes.LightGreen;
+            }
+            else if ( data.IsHidden )
+            {
+                rectStatus.Fill = Brushes.IndianRed;
             }
             else
             {
-                grid.Background = Brushes.Transparent;
+                rectStatus.Fill = Brushes.Transparent;
             }
 
             tbRegion.Text = data.Region;

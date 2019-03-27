@@ -8,7 +8,7 @@
              d:DesignHeight="300" d:DesignWidth="600">
     <Grid>
         <DockPanel>
-            <Button Name="btnRefresh" Width="80" DockPanel.Dock="Right">Refresh</Button>
+            <Button Name="btnDel" Width="80" DockPanel.Dock="Right">Del</Button>
             <Button Name="btnOpenMap" Width="80" DockPanel.Dock="Right" Margin="0,0,16,0">Open map</Button>
             <Button Name="btnOpenSite" Width="80" DockPanel.Dock="Right" Margin="0,0,16,0">Open site</Button>
             <Button Name="btnFavorite" Width="40" DockPanel.Dock="Right" Margin="0,0,16,0" FontSize="24">★</Button>
